@@ -1,0 +1,92 @@
+{
+ "books": [
+  {
+   "id": "1a",
+   "shizi": 300,
+   "xiezi": 100,
+   "words": 0,
+   "poems": 6
+  },
+  {
+   "id": "1b",
+   "shizi": 400,
+   "xiezi": 200,
+   "words": 0,
+   "poems": 7
+  },
+  {
+   "id": "2a",
+   "shizi": 450,
+   "xiezi": 250,
+   "words": 229,
+   "poems": 7
+  },
+  {
+   "id": "2b",
+   "shizi": 450,
+   "xiezi": 250,
+   "words": 283,
+   "poems": 7
+  },
+  {
+   "id": "3a",
+   "shizi": 250,
+   "xiezi": 250,
+   "words": 250,
+   "poems": 9
+  },
+  {
+   "id": "3b",
+   "shizi": 250,
+   "xiezi": 250,
+   "words": 252,
+   "poems": 9
+  },
+  {
+   "id": "4a",
+   "shizi": 250,
+   "xiezi": 250,
+   "words": 240,
+   "poems": 9
+  },
+  {
+   "id": "4b",
+   "shizi": 250,
+   "xiezi": 250,
+   "words": 195,
+   "poems": 10
+  },
+  {
+   "id": "5a",
+   "shizi": 200,
+   "xiezi": 220,
+   "words": 239,
+   "poems": 11
+  },
+  {
+   "id": "5b",
+   "shizi": 200,
+   "xiezi": 180,
+   "words": 140,
+   "poems": 11
+  },
+  {
+   "id": "6a",
+   "shizi": 0,
+   "xiezi": 180,
+   "words": 232,
+   "poems": 10
+  },
+  {
+   "id": "6b",
+   "shizi": 0,
+   "xiezi": 120,
+   "words": 166,
+   "poems": 17
+  }
+ ],
+ "chars": 2999,
+ "shizi": 3000,
+ "xiezi": 2500,
+ "poems": 113
+}

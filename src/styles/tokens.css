@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'WenKai';
+  src: url('/fonts/wenkai.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --paper: #fbf7f0;
+  --paper-deep: #f3ecdf;
+  --card: #ffffff;
+  --ink: #2d2a32;
+  --ink-soft: #6e6875;
+  --ink-faint: #a39cab;
+  --line: #eae2d8;
+  --line-strong: #d8cec1;
+
+  --coral: #e76f51;
+  --coral-deep: #c9563b;
+  --coral-soft: #fbeae3;
+  --amber: #cf8020;
+  --amber-deep: #a2600f;
+  --amber-soft: #fbeed8;
+  --green: #3e9b5f;
+  --green-deep: #2f7a4a;
+  --green-soft: #e7f4ec;
+  --teal: #2a9d8f;
+  --teal-deep: #1f7a70;
+  --teal-soft: #e2f1ef;
+  --violet: #7c6ff0;
+  --violet-deep: #5f53c7;
+  --violet-soft: #ecebfc;
+  --rose: #d65a8a;
+  --rose-deep: #b0406c;
+  --rose-soft: #fbe6ef;
+
+  --gold: #f4a93d;
+  --red: #d64545;
+  --red-soft: #fbe7e2;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow-sm: 0 1px 2px rgba(45, 42, 50, 0.06), 0 2px 8px rgba(45, 42, 50, 0.05);
+  --shadow-md: 0 2px 4px rgba(45, 42, 50, 0.07), 0 12px 28px rgba(45, 42, 50, 0.09);
+
+  --font-han: 'WenKai', 'Kaiti SC', 'KaiTi', 'STKaiti', 'Noto Serif SC', serif;
+  --font-body: -apple-system, 'PingFang SC', 'Segoe UI', 'Noto Sans SC', 'Microsoft YaHei', system-ui, sans-serif;
+
+  --accent: var(--coral);
+  --accent-deep: var(--coral-deep);
+  --accent-soft: var(--coral-soft);
+}
+
+.g1 { --accent: var(--coral); --accent-deep: var(--coral-deep); --accent-soft: var(--coral-soft); }
+.g2 { --accent: var(--amber); --accent-deep: var(--amber-deep); --accent-soft: var(--amber-soft); }
+.g3 { --accent: var(--green); --accent-deep: var(--green-deep); --accent-soft: var(--green-soft); }
+.g4 { --accent: var(--teal); --accent-deep: var(--teal-deep); --accent-soft: var(--teal-soft); }
+.g5 { --accent: var(--violet); --accent-deep: var(--violet-deep); --accent-soft: var(--violet-soft); }
+.g6 { --accent: var(--rose); --accent-deep: var(--rose-deep); --accent-soft: var(--rose-soft); }
