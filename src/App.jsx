@@ -79,6 +79,7 @@ export default function App() {
               <Link to="/shelf" className={['shelf', 'book', 'lesson'].includes(top) ? 'active' : ''}>书架</Link>
               <Link to="/library" className={top === 'library' ? 'active' : ''}>字库</Link>
               <Link to="/progress" className={top === 'progress' ? 'active' : ''}>成长</Link>
+              <Link to="/settings" className={top === 'settings' ? 'active' : ''} aria-label="设置">⚙︎</Link>
             </nav>
           </div>
         </header>

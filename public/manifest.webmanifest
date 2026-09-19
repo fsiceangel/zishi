@@ -1,0 +1,9 @@
+{
+  "name": "字诗 · 识字与古诗",
+  "short_name": "字诗",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fbf7f0",
+  "theme_color": "#fbf7f0",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
