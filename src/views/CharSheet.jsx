@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Suspense } from 'react'
 import { Sheet, SpeakButton, Link } from '../components/ui.jsx'
-const Strokes = React.lazy(() => import('../components/Strokes.jsx'))
+import { lazyWithReload, ErrorBoundary } from '../lib/lazy.jsx'
+const Strokes = lazyWithReload(() => import('../components/Strokes.jsx'), 'strokes')
 import { useProgress } from '../App.jsx'
 import { CHARS, LESSON_BY_ID, lessonLabel, wordPy } from '../lib/data.js'
 import { stageOf, STAGE_LABEL, INTERVALS, dayNumber } from '../lib/srs.js'
@@ -91,7 +92,7 @@ export default function CharSheet({ c, onClose }) {
             我来写
           </button>
         </div>
-        <Suspense fallback={<div className="strokes-hint">笔顺加载中…</div>}>
+        <ErrorBoundary><Suspense fallback={<div className="strokes-hint">笔顺加载中…</div>}>
           <Strokes
           char={c}
           mode={mode}
@@ -100,7 +101,7 @@ export default function CharSheet({ c, onClose }) {
             logDay('write')
           }}
         />
-        </Suspense>
+        </Suspense></ErrorBoundary>
       </div>
 
       <div className="row-wrap mt-lg" style={{ justifyContent: 'center' }}>

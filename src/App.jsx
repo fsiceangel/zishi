@@ -14,6 +14,7 @@ import ProgressPage from './views/ProgressPage.jsx'
 import Library from './views/Library.jsx'
 import Settings from './views/Settings.jsx'
 import CharSheet from './views/CharSheet.jsx'
+import { ErrorBoundary } from './lib/lazy.jsx'
 
 const CharSheetCtx = createContext(() => {})
 export const useOpenChar = () => useContext(CharSheetCtx)
@@ -83,7 +84,9 @@ export default function App() {
             </nav>
           </div>
         </header>
-        <main>{route(hash)}</main>
+        <main>
+          <ErrorBoundary key={hash}>{route(hash)}</ErrorBoundary>
+        </main>
         <footer className="app-footer">字诗 · 部编版语文 1–6 年级识字表、写字表与古诗词 · 进度只保存在这台设备上</footer>
         <CharSheet c={sheetChar} onClose={() => setSheetChar(null)} />
       </div>

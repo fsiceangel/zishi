@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useCallback, Suspense } from 'react'
 import { Link, Progress, CharTile, Ruby, SpeakButton } from '../components/ui.jsx'
-const Strokes = React.lazy(() => import('../components/Strokes.jsx'))
+import { lazyWithReload, ErrorBoundary } from '../lib/lazy.jsx'
+const Strokes = lazyWithReload(() => import('../components/Strokes.jsx'), 'strokes')
 import { useProgress, useOpenChar } from '../App.jsx'
 import { CHARS, POEM_BY_ID, VOLUME_BY_ID, LESSON_BY_ID, wordPy, lineTokens, isCJK } from '../lib/data.js'
 import { pinyinOptions, charOptions, contextWord, shuffle, pick, poemCloze, clozeOptions, nextLineQuestion, titleQuestion } from '../lib/quiz.js'
@@ -284,9 +285,9 @@ function WriteQuestion({ q, rate, tts, onDone }) {
       </div>
       {q.word && <div className="prompt-word">{[...q.word].map((ch) => (ch === q.c ? '＿' : ch)).join('')}</div>}
       <div className="mt">
-        <Suspense fallback={<div className="strokes-hint">笔顺加载中…</div>}>
+        <ErrorBoundary><Suspense fallback={<div className="strokes-hint">笔顺加载中…</div>}>
           <Strokes char={q.c} mode="quiz" size={240} onQuizDone={(d) => { setResult(d); logDay('write') }} />
-        </Suspense>
+        </Suspense></ErrorBoundary>
       </div>
       <div className={`feedback ${result ? (ok ? 'good' : 'bad') : ''}`}>{result ? (ok ? '写对了！' : `是「${q.c}」，多练几遍`) : ' '}</div>
       <div className="row-wrap" style={{ justifyContent: 'center' }}>
