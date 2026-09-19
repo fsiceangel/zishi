@@ -284,6 +284,19 @@ for code, *_ in BOOKS:
                     chars[c]["words"].append((w, lid))
 
 mined = json.load(open(os.path.join(OUT, "mined_words.json"), encoding="utf-8")) if os.path.exists(os.path.join(OUT, "mined_words.json")) else {}
+# hand-authored fallback words (tools/extra_words.json); each must contain the char read with its textbook pinyin
+extra_path = os.path.join(HERE, "extra_words.json")
+extra = json.load(open(extra_path, encoding="utf-8")) if os.path.exists(extra_path) else {}
+for c, ws in list(extra.items()):
+    good = []
+    for w in ws:
+        if c not in w or not (2 <= len(w) <= 4) or not all(CJK.match(x) for x in w) or c not in chars:
+            report["extra word rejected (shape)"].append(f"{c}: {w}"); continue
+        wp = pinyin(w, style=Style.TONE, heteronym=False)
+        if wp[w.index(c)][0] != chars[c]["py"]:
+            report["extra word rejected (reading)"].append(f'{c} {chars[c]["py"]}: {w} -> {" ".join(x[0] for x in wp)}'); continue
+        good.append(w)
+    extra[c] = good
 # example words per char: own lesson first, then same book, then earlier/later books; max 6
 for c, info in chars.items():
     seen = set(); picked = []
@@ -297,7 +310,7 @@ for c, info in chars.items():
         seen.add(w); picked.append(w)
         if len(picked) >= 6:
             break
-    for w in mined.get(c, []):
+    for w in mined.get(c, []) + extra.get(c, []):
         if len(picked) >= 4:
             break
         if w not in seen:
