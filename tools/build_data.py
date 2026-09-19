@@ -290,10 +290,12 @@ extra = json.load(open(extra_path, encoding="utf-8")) if os.path.exists(extra_pa
 for c, ws in list(extra.items()):
     good = []
     for w in ws:
+        trusted = w.startswith("!")   # "!" marks words whose reading was checked by hand (pypinyin gets them wrong)
+        w = w.lstrip("!")
         if c not in w or not (2 <= len(w) <= 4) or not all(CJK.match(x) for x in w) or c not in chars:
             report["extra word rejected (shape)"].append(f"{c}: {w}"); continue
         wp = pinyin(w, style=Style.TONE, heteronym=False)
-        if wp[w.index(c)][0] != chars[c]["py"]:
+        if not trusted and wp[w.index(c)][0] != chars[c]["py"]:
             report["extra word rejected (reading)"].append(f'{c} {chars[c]["py"]}: {w} -> {" ".join(x[0] for x in wp)}'); continue
         good.append(w)
     extra[c] = good
